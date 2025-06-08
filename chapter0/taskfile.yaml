@@ -1,0 +1,45 @@
+version: "3"
+
+tasks:
+  _replace-sketch:
+    internal: true
+    vars:
+      target: "{{.target}}"
+    cmds:
+      - powershell -Command "(Get-Content index.html) -replace 'src=\"sketch.*?\.js\"', 'src=\"{{.target}}\"' | Set-Content index.html"
+    silent: true
+
+  example1:
+    cmds:
+      - task: _replace-sketch
+        vars: { target: "sketchEx1.js" }
+
+  example2:
+    cmds:
+      - task: _replace-sketch
+        vars: { target: "sketchEx2.js" }
+
+  example3:
+    cmds:
+      - task: _replace-sketch
+        vars: { target: "sketchEx3.js" }
+
+  exercise3:
+    cmds:
+      - task: _replace-sketch
+        vars: { target: "sketchExercise3.js" }
+
+  example4:
+    cmds:
+      - task: _replace-sketch
+        vars: { target: "sketchEx4.js" }
+  
+  exercise4:
+    cmds:
+      - task: _replace-sketch
+        vars: { target: "sketchExercise4.js" }
+
+  test:
+    cmds:
+      - task: _replace-sketch
+        vars: { target: "sketchTest.js" }
